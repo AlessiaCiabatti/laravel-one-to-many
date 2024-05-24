@@ -203,8 +203,13 @@ button.btn.btn-outline-success {
     color: rgb(237, 126, 107);
 }
 
-button.btn.btn-outline-warning {
-    background-color: rgb(237, 126, 107);
-    color: rgb(69, 69, 69);
-    border: none;
+form{
+    button.btn.btn-outline-warning {
+        background-color: rgb(237, 126, 107);
+        color: rgb(69, 69, 69);
+        border: none;
+    }
+    .error_message{
+        color: #731c26;
+    }
 }
