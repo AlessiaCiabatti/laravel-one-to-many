@@ -9,6 +9,11 @@ body {
 .main-wrapper {
     height: calc(100vh - 56px);
     background-color: #fff3ed;
+    .content{
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
 }
 
 header.navbar {
@@ -22,8 +27,9 @@ header.navbar {
 
 aside {
     background-color: #ffb5a0;
-    width: 250px;
+    width: 300px;
     flex-shrink: 0;
+    padding-left: 20px;
 
     .dashboard {
         margin-left: 18px;
@@ -81,8 +87,8 @@ aside {
         display: block;
         border-radius: 28px;
         background: #ff58337c;
-        width: 45px;
-        height: 45px;
+        width: 47px;
+        height: 47px;
         transition: all 0.3s ease;
         z-index: -1;
     }
@@ -162,6 +168,10 @@ button.btn.btn-outline-success {
         padding-left: 20px;
     }
 
+    td.project{
+        width: 0px;
+    }
+
     th:first-child {
         padding-left: 20px;
         border-top-left-radius: 10px;
@@ -187,4 +197,14 @@ button.btn.btn-outline-success {
 
 .my_bgr {
     background-color: rgb(237, 126, 107);
+}
+
+.date p{
+    color: rgb(237, 126, 107);
+}
+
+button.btn.btn-outline-warning {
+    background-color: rgb(237, 126, 107);
+    color: rgb(69, 69, 69);
+    border: none;
 }
