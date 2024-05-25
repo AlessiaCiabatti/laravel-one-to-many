@@ -7,6 +7,7 @@
 
     <div>
         <ul>
+
             <li>
                 <a class="text-white cta" href="{{ route('admin.home') }}">
                     <i class="fa-solid fa-house"></i>
@@ -24,7 +25,7 @@
 
             <li>
                 <a class="text-white cta" href="{{ route('admin.projects.create') }}">
-                    <i class="fa-solid fa-diagram-project"></i>
+                    <i class="plus fa-solid fa-file"></i>
                     <span>New Projects</span>
 
                 </a>
@@ -42,9 +43,16 @@
                 <a class="text-white cta" href="{{ route('admin.types.index') }}">
                     <i class="fa-solid fa-swatchbook"></i>
                     <span>Types</span>
-
                 </a>
             </li>
+
+            <li>
+                <a class="text-white cta" href="{{ route('admin.technology_projects') }}">
+                    <i class="fa-solid fa-swatchbook"></i>
+                    <span>Technology/Projects</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </aside>

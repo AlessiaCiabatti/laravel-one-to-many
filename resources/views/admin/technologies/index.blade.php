@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Technologies</h2>
+    <h1>Technologies</h1>
 
     @if ($errors->any())
         <div class="w-50 alert alert-danger" role="alert">

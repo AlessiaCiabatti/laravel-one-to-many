@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Function\Helper;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Technology;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -27,7 +28,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('technologies'));
     }
 
     /**
@@ -68,7 +70,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'technologies'));
     }
 
     /**
@@ -102,6 +105,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        if($project->image){
+            Storage::disk('public')->delete($project->image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('delete', $project->title . ' has been delete.');

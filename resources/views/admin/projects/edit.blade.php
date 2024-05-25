@@ -6,7 +6,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="my-4">Edit of {{ $project->title }}</h1>
+    <h1 class="mb-4">Edit of {{ $project->title }}</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -30,6 +30,19 @@
             @error('title')
                 <p class="error_message">{{ $message }}</p>
             @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Technology</label>
+
+            <select name="technology_id" class="form-select" aria-label="Default select example">
+                <option value="">Select Technology</option>
+                @foreach ($technologies as $technology)
+                    <option value="{{ $technology->id }}"
+                        @if (old('technology_id' , $project->technology?->id) == $technology->id) selected @endif
+                        >{{ $technology->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">

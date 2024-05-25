@@ -6,7 +6,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="my-4">Projects List</h1>
+    <h1 class="mb-4">Projects List</h1>
 
     @if (session('delete'))
         <div class="w-50 alert alert-success" role="alert">
@@ -19,8 +19,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Date</th>
+                <th scope="col">Technology</th>
                 <th scope="col">Image</th>
+                <th scope="col">Date</th>
                 <th class="second_th-pro" scope="col">Actions</th>
             </tr>
         </thead>
@@ -29,11 +30,12 @@
                 <tr>
                     <td class="project">{{ $project->id }}</td>
                     <td>{{ $project->title }}</td>
-                    <td>{{ Helper::formatDate($project->updated_at) }}</td>
+                    <td>{{ $project->technology?->name }}</td>
                     <td>
                         <img src="{{ asset('storage/' . $project->image) }}" class="thumb-index"
                             onerror="this.src='/img/no-image.jpg'">
                     </td>
+                    <td>{{ Helper::formatDate($project->updated_at) }}</td>
                     <td>
                         <div class="d-flex mx-4">
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn my_bgy me-2"><i
