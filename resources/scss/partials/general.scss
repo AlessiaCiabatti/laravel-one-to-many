@@ -177,8 +177,14 @@ button.btn.btn-outline-success {
         border-top-left-radius: 10px;
     }
 
-    th.second_th{
+    th.second_th,
+    th.second_th-pro{
         border-top-right-radius: 10px;
+    }
+
+    th.second_th-pro{
+        display: flex;
+        justify-content: center
     }
 
     td:last-child {
@@ -212,4 +218,16 @@ form{
     .error_message{
         color: #731c26;
     }
+
+    .thumb{
+        width: 200px;
+        margin-top: 25px;
+    }
+
+}
+
+.thumb-index{
+    width: 50px;
+    height: 50px;
+    object-fit: cover
 }

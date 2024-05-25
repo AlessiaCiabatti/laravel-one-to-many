@@ -4,7 +4,7 @@
     <h2>Types</h2>
 
     @if ($errors->any())
-        <div class="alert alert-danger" role="alert">
+        <div class="w-50 alert alert-danger" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>
@@ -16,19 +16,19 @@
     @endif
 
     @if (session('error'))
-        <div class="alert alert-danger" role="alert">
+        <div class="w-50 alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
     @endif
 
     @if (session('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="w-50 alert alert-success" role="alert">
             {{ session('success') }}
         </div>
     @endif
 
 
-    <div class="my-4">
+    <div class="my-4 w-50">
         <form action="{{ route('admin.types.store') }}" method="POST" class="d-flex">
             @csrf
             <input class="form-control me-2" type="search" placeholder="Add" name="name">
@@ -36,7 +36,7 @@
         </form>
     </div>
 
-    <table class="table crud-table">
+    <table class="table crud-table w-50">
         <thead>
             <tr>
                 <th scope="col">Types</th>
@@ -60,12 +60,9 @@
                             <button class="btn my_bgy me-2" onclick="submitForm({{ $type->id }})"><i
                                     class="fa-solid fa-pencil"></i></button>
 
-                            <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST"
-                                onsubmit="return confirm('Do you want to delete this types?')">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
-                            </form>
+                                    @include('admin.partials.delete-form', ['route'=> route('admin.types.destroy', $type->id),
+                                                                                            'message'=>'Are you sure to delete this type?',
+                                                                                            ])
                         </div>
                     </td>
                 </tr>

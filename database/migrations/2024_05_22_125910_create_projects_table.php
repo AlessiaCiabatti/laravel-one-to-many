@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('text');
             $table->tinyInteger('reading_time')->nullable();
             $table->string('image')->nullable();
+            $table->string('image_original_name')->nullable();
             $table->timestamps();
         });
     }
