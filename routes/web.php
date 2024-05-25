@@ -38,6 +38,7 @@ Route::middleware(['auth', 'verified'])
                     ]);
                     // rotte custom
                     Route::get('technology-projects', [TechnologyController::class, 'technologyProjects'])->name('technology_projects');
+                    Route::get('orderBy/{direction}/{column}', [ProjectController::class, 'orderBy'])->name('orderBy');
                 });
 
 

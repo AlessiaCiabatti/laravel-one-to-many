@@ -24,6 +24,7 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:100',
             'text' => 'required|min:10',
+            'image' => 'image|mimes:jpg,bmp,png|max:20480',
         ];
     }
 
@@ -35,6 +36,10 @@ class ProjectRequest extends FormRequest
 
             'text.required' => 'Description is a required field',
             'text.min' => 'Description needs :min characters',
+
+            'image.required' => 'The uploaded file must be an image',
+            'image.mimes' => 'Image must be in jpg, bmp or png format',
+            'image.max' => 'Image must be maximum :max kb',
         ];
     }
 }

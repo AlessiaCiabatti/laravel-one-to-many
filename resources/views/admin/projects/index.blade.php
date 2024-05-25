@@ -8,6 +8,12 @@
 @section('content')
     <h1 class="mb-4">Projects List</h1>
 
+    @if (isset($_GET['toSearch']))
+        <div class="date d-flex justify-content-end">
+            <p>Search for: {{ $_GET['toSearch'] }} | Find: {{ $count_search }}</p>
+        </div>
+    @endif
+
     @if (session('delete'))
         <div class="w-50 alert alert-success" role="alert">
             {{ session('delete') }}
@@ -17,11 +23,11 @@
     <table class="table crud-table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
+                <th scope="col"><a href="{{ route('admin.orderBy',  ['direction'=>$direction, 'column'=>'id']) }}">ID</a></th>
+                <th scope="col"><a href="{{ route('admin.orderBy',  ['direction'=>$direction, 'column'=>'title']) }}">Title</a></th>
                 <th scope="col">Technology</th>
                 <th scope="col">Image</th>
-                <th scope="col">Date</th>
+                <th scope="col"><a href="{{ route('admin.orderBy',  ['direction'=>$direction, 'column'=>'updated_at']) }}">Data</a></th>
                 <th class="second_th-pro" scope="col">Actions</th>
             </tr>
         </thead>
@@ -51,6 +57,7 @@
                 </tr>
 
             @empty
+                <h4 class="mb-4">No items found</h4>
             @endforelse
 
         </tbody>

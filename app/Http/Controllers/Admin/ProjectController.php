@@ -18,9 +18,26 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('id', 'desc')->paginate(15);
 
-        return view('admin.projects.index', compact('projects'));
+        if(isset($_GET['toSearch'])){
+            $projects = Project::where('title', 'LIKE', '%' . $_GET['toSearch'] . '%')->paginate(15);
+            $count_search = Project::where('title', 'LIKE', '%' . $_GET['toSearch'] . '%')->count();
+        }else{
+            $projects = Project::orderBy('id', 'desc')->paginate(15);
+            $count_search = Project::count();
+        }
+
+        $direction = 'desc';
+
+        return view('admin.projects.index', compact('projects', 'count_search', 'direction'));
+        }
+
+    public function orderBy($direction, $column)
+    {
+        $direction = $direction === 'desc' ? 'asc' : 'desc';
+        $projects = Project::orderBy($column, $direction)->paginate();
+        $count_search = Project::count();
+        return view('admin.projects.index', compact('projects', 'count_search', 'direction'));
     }
 
     /**
